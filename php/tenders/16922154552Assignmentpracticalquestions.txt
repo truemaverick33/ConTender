@@ -1,0 +1,199 @@
+Q1)
+<html>
+<body ng-app="" ng-init="pokemons=[{name:'charmander',type:'fire'},{name:'bulbasaur',type:'grass'}
+,{name:'squirtle',type:'water'}]">
+<select ng-model="pkm">
+<option ng-repeat="starter in pokemons">{{starter.name + "(" + starter.type +")" }}</option>
+</select>
+<h2> Your chosen starter pokemon: 
+<p ng-bind="pkm"></p></h2>
+<script src="C:/Users/rahil/OneDrive/Documents/angular.min.js"></script>
+</body>
+</html>
+
+-----------------------------------------------------------------------------------------------
+Q2)
+<html>
+<body>
+<div ng-app="myctrl" ng-controller="studentController">
+choose roll number : <input type="number" ng-model="student.roll" max="5" min="1"/>
+{{student.Result()}}
+<br/>
+<br/>
+<h2>RESULT :</h2>
+<table border="1">
+<tr>
+<th>roll no</th><th>name</th><th>class</th><th>division</th><th>percentage</th><th>grade</th>
+</tr>
+<tr>
+<td>{{student.roll}}</td>
+<td>{{student.Name}}</td>
+<td>{{student.Class}}</td>
+<td>{{student.Division}}</td>
+<td>{{student.Percentage}}</td>
+<td>{{student.Grade}}</td>
+</tr>
+</table>
+</div>
+<script src="C:/Users/rahil/OneDrive/Documents/angular.min.js"></script>
+<script>
+var ctrl = angular.module('myctrl',[]).controller('studentController',function($scope)
+{
+  $scope.student = {
+  roll : 0,Name : "",Class : "",Division : "",Percentage : "",Grade : "",Result : function(){
+  var names = ["Harry","Gini","Ron","Hermoine","Draco"];
+  var divs = ["B","B","A","A","C"];
+  var pers = ["65%","93%","58%","95%","80%"];
+  var grd = ["Second","First-Dist","Pass","First-Dist","First"];
+  var studObj;
+  stdo = $scope.student;
+  stdo.Name=names[stdo.roll-1];
+  stdo.Class="TYBCA";
+  stdo.Division=divs[stdo.roll-1];
+  stdo.Percentage=pers[stdo.roll-1];
+  stdo.Grade=grd[stdo.roll-1];
+  }
+  }
+});
+</script>
+</body>
+</html>
+
+----------------------------------------------------------------------------------------------
+Q3)
+<html>
+<body ng-app="" ng-init="items=[{name:'PiZza',price:100},{name:'BurGer',price:75},{name:'fRiEs',price:60},{name:'tEa',price:20}]">
+<table border="1">
+<tr><th>default</th><th>uppercase</th><th>lowercase</th><th>price</th></tr>
+<tr ng-repeat="item in items | filter : name | orderBy :'price'">
+<td>{{item.name}}</td>
+<td>{{item.name | uppercase}}</td>
+<td>{{item.name | lowercase}}</td>
+<td>{{item.price | currency}}</td>
+</tr>
+<script src="C:/Users/rahil/OneDrive/Documents/angular.min.js"></script>
+</body>
+</html>
+
+----------------------------------------------------------------------------------------------
+Q4)
+<html>
+<style>
+.fire{
+width: 429px;
+  height: 230px;
+  background: url(firebending.gif) 0 0;
+  transition : width 2s;
+}
+.fire:hover {
+ width: 300px
+}
+.water{
+width: 429px;
+  height: 230px;
+  background: url(waterbending.gif) 0 0;
+  transition : width 2s;
+}
+.water:hover {
+ width: 500px
+}
+.earth{
+width: 429px;
+  height: 230px;
+  background: url(earthbending.gif) 0 0;
+  transition : height 2s;
+}
+.earth:hover {
+ height: 300px
+}
+.air{
+width: 429px;
+  height: 230px;
+  background: url(airbending.gif) 0 0;
+  transition : height 2s;
+}
+.air:hover {
+ height: 100px
+}
+</style>
+<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.9/angular.min.js"></script>
+<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.9/angular-animate.js"></script>
+
+<body ng-app="myApp">
+
+<input type="checkbox" ng-model="myCheck">ng-hide 
+<input type="checkbox" ng-model="myCheck2">ng-show  
+<div ng-hide="myCheck" ng-class="elements" id="div1"></div>
+<div ng-show="myCheck2"><br/><br/><input type="checkbox" ng-model="dis">disable
+<select ng-model="elements" ng-disabled="dis">
+<option>fire</option>
+<option>water</option>
+<option>earth</option>
+<option>air</option>
+</select>
+<br/><br/>
+<button ng-click="count = count + 1" ng-init="count=0">ng-click</button>
+{{"the current click count is : " + count}}
+</div>
+<script>
+var app = angular.module('myApp', ['ngAnimate']);
+</script>
+
+</body>
+</html>
+
+----------------------------------------------------------------------------------------------
+Q5)
+<html>
+<script src="C:/Users/rahil/OneDrive/Documents/angular.min.js"></script>  
+<style>
+input.ng-invalid {
+    background-color:pink;
+}
+input.ng-untouched {
+   background-color:white;
+}
+input.ng-valid {
+    background-color:lightgreen;
+}
+</style>
+<body ng-app="" align="center">
+
+<h1><u>Registration Form</u></h1>
+
+<form name="formVal" novalidate>
+Enter Your First Name : <input type="text" name="fname" ng-model="fname" required>
+<span ng-show="formVal.fname.$touched && formVal.fname.$invalid"><img src="err.jpg" height="15" width="15">Cannot be Blank</span>
+<br><br>
+Enter Your Last Name : <input type="text" name="lname" ng-model="lname" required>
+<span ng-show="formVal.lname.$touched && formVal.lname.$invalid"><img src="err.jpg" height="15" width="15">Cannot be Blank</span>
+<br><br>
+Enter Your email : <input type="email" name="email" ng-model="email" pattern="[A-Za-z0-9._ ]*\@+[a-zA-Z]*\.+[a-zA-Z.]*" required>
+<span ng-show="formVal.email.$touched && formVal.email.$invalid"><img src="err.jpg" height="15" width="15">Cannot be Blank,must be a valid email format eg: Exam_ple.123@gmail.com</span>
+<br><br>
+Enter Your phone number : <input type="tel" name="phno" ng-model="phno" pattern="[6-9]+[0-9]{9}" required>
+<span ng-show="formVal.phno.$touched && formVal.phno.$invalid"><img src="err.jpg" height="15" width="15">Cannot be Blank,must contain 10 digits starting with 6-9</span>
+<br><br>
+Enter Your password : <input type="password" name="pwd" ng-model="pwd" pattern="[A-Za-z0-9._@]{7}[a-zA-Z0-9._@]*" required>
+<span ng-show="formVal.pwd.$touched && formVal.pwd.$invalid"><img src="err.jpg" height="15" width="15">Cannot be Blank,must be minimum 7 chars</span>
+<br><br>
+Select City : <select name="city" ng-model="city" required>
+<option>select</option>
+<option>bharuch</option>
+<option>ankleshwar</option>
+<option>surat</option>
+<option>baroda</option>
+<option>mumbai</option>
+</select>
+<span ng-show="formVal.city.$dirty && city == 'select' "><img src="err.jpg" height="15" width="15">select a city</span>
+<br><br>
+Select Date Of Birth : <input type="date" name="date" ng-model="date" required>
+<span ng-show="formVal.date.$touched && (formVal.date.$invalid || date == 'dd-mm-yyyy')"><img src="err.jpg" height="15" width="15">select a date</span>
+<br><br>
+<input type="submit" value="submit" ng-disabled="formVal.fname.$untouched || formVal.email.$untouched || formVal.lname.$untouched || formVal.phno.$untouched || formVal.city.$untouched || formVal.date.$untouched || formVal.fname.$invalid || formVal.email.$invalid || formVal.lname.$invalid || formVal.date.$invalid || formVal.city.$invalid || formVal.phno.$invalid || formVal.pwd.$untouched || formVal.pwd.$invalid">
+<input type="reset" value="reset">
+</form>
+</body>
+</html>
+
+----------------------------------------------------------------------------------------------
