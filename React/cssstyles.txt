@@ -1,0 +1,12 @@
+background-color: #ffffff;
+opacity: 0.8;
+background-image:  repeating-radial-gradient( circle at 0 0, transparent 0, #ffffff 10px ), repeating-linear-gradient( #f7e94555, #f7e945 );
+
+background-color: #ffffff;
+opacity: 0.8;
+background-image:  radial-gradient(#f7e945 0.9500000000000001px, transparent 0.9500000000000001px), radial-gradient(#f7e945 0.9500000000000001px, #ffffff 0.9500000000000001px);
+background-size: 38px 38px;
+background-position: 0 0,19px 19px;
+
+background: linear-gradient(132deg, rgb(241, 242, 11) 0.00%, rgb(248, 161, 27) 100.00%);
+background: linear-gradient(132deg, rgb(241, 242, 11) 0.00%, rgb(248, 161, 27) 47.80%);
